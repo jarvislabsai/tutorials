@@ -1,0 +1,10 @@
+# Install ComfyUI's own requirements first:
+#   uv pip install -r requirements.txt  (from ComfyUI directory)
+#
+# These are the key packages and their versions verified on A100-80GB:
+# torch==2.10.0+cu128
+# torchvision==0.25.0
+# torchaudio==2.10.0
+# transformers==5.3.0
+# huggingface-hub==1.7.1
+# safetensors==0.7.0
