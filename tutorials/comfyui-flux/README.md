@@ -1,36 +1,34 @@
-# ComfyUI + Flux on JarvisLabs A100 80GB
+# ComfyUI + Flux on JarvisLabs
 
-Run ComfyUI with FLUX.1 models on a cloud A100 80GB GPU for fast AI image generation.
-
-## What You'll Do
-
-- Install ComfyUI on a JarvisLabs GPU instance
-- Download FLUX.1 Schnell model and text encoders
-- Access ComfyUI's web interface remotely
-- Generate images using the Flux text-to-image workflow
+Run ComfyUI with FLUX.1 Schnell on a cloud A100 80GB -- one command, under 5 minutes.
 
 ## Quick Start
 
+On your JarvisLabs A100-80GB instance (created with HTTP port `8188`):
+
 ```bash
-# On your JarvisLabs A100-80GB instance:
-cd /home
-mkdir comfyui-tutorial && cd comfyui-tutorial
-git clone https://github.com/comfyanonymous/ComfyUI.git
-cd ComfyUI
-
-# Create isolated environment
-uv venv .venv && source .venv/bin/activate
-uv pip install -r requirements.txt
-
-# Download models
-python download_models.py
-
-# Start ComfyUI (accessible via your instance's HTTP endpoint)
-python main.py --listen 0.0.0.0 --port 8188
+export HF_TOKEN=your_huggingface_token
+git clone https://github.com/jarvislabsai/tutorials.git
+cd tutorials/comfyui-flux
+bash start.sh
 ```
+
+ComfyUI will be accessible at your instance's HTTPS endpoint.
 
 ## Requirements
 
-- JarvisLabs A100-80GB instance (80GB VRAM)
-- 100GB storage
-- Hugging Face account with access to FLUX.1 models
+| Requirement | Value |
+|---|---|
+| GPU | A100-80GB |
+| Storage | 100GB |
+| HTTP Ports | 8188 |
+| HF Token | [Get one here](https://huggingface.co/settings/tokens) (with [FLUX.1 access](https://huggingface.co/black-forest-labs/FLUX.1-schnell)) |
+
+## Deep Dive
+
+For a full step-by-step walkthrough explaining what each piece does, read the [tutorial on jarvislabs.ai](https://jarvislabs.ai/tutorials/comfyui-flux-cloud-gpu).
+
+## Files
+
+- `start.sh` -- One-command setup (clone, install, download models, start ComfyUI)
+- `download_models.py` -- Downloads all required model weights from Hugging Face
